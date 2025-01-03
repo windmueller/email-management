@@ -1,0 +1,150 @@
+databaseChangeLog:
+- changeSet:
+    id: 1735764059854-1
+    author: windmueller (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: state
+            type: SMALLINT
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: email_pkey
+            name: id
+            type: BIGINT
+        - column:
+            constraints:
+              nullable: false
+            name: last_update
+            type: TIMESTAMP WITH TIME ZONE
+        - column:
+            name: body
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: date
+            type: TIMESTAMP WITH TIME ZONE
+        - column:
+            constraints:
+              nullable: false
+            name: charset
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: from_header
+            type: VARCHAR(255)
+        - column:
+            name: subject
+            type: VARCHAR(255)
+        tableName: email
+- changeSet:
+    id: 1735764059854-2
+    author: windmueller (generated)
+    changes:
+    - createSequence:
+        cacheSize: 1
+        cycle: false
+        dataType: bigint
+        incrementBy: 50
+        maxValue: 9223372036854775807
+        minValue: 1
+        sequenceName: email_seq
+        startValue: 1
+- changeSet:
+    id: 1735764059854-3
+    author: windmueller (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: email_id
+            type: BIGINT
+        - column:
+            name: bcc
+            type: VARCHAR(255)
+        tableName: email_bcc
+- changeSet:
+    id: 1735764059854-4
+    author: windmueller (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: email_id
+            type: BIGINT
+        - column:
+            name: cc
+            type: VARCHAR(255)
+        tableName: email_cc
+- changeSet:
+    id: 1735764059854-5
+    author: windmueller (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+            name: email_id
+            type: BIGINT
+        - column:
+            name: to_header
+            type: VARCHAR(255)
+        tableName: email_to
+- changeSet:
+    id: 1735764059854-6
+    author: windmueller (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: email_id
+        baseTableName: email_to
+        constraintName: fk64epad6w12obj2rwl0q10wx2g
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: email
+        validate: true
+- changeSet:
+    id: 1735764059854-7
+    author: windmueller (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: email_id
+        baseTableName: email_bcc
+        constraintName: fka6gtufsixe82v5voyhccbujmi
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: email
+        validate: true
+- changeSet:
+    id: 1735764059854-8
+    author: windmueller (generated)
+    changes:
+    - addForeignKeyConstraint:
+        baseColumnNames: email_id
+        baseTableName: email_cc
+        constraintName: fkqvtommri700u1m4uva4nmw45w
+        deferrable: false
+        initiallyDeferred: false
+        onDelete: NO ACTION
+        onUpdate: NO ACTION
+        referencedColumnNames: id
+        referencedTableName: email
+        validate: true
+

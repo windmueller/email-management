@@ -20,11 +20,21 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-rest")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.flywaydb:flyway-core")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.jetbrains:annotations:26.0.1")
+	implementation("com.h2database:h2")
+	implementation("org.postgresql:postgresql")
+	implementation("org.liquibase:liquibase-core")
+
 	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.security:spring-security-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+	testImplementation("org.assertj:assertj-core")
 }
 
 tasks.withType<Test> {
